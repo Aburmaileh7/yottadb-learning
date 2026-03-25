@@ -1,4 +1,5 @@
 main
+	SET $ETRAP="DO handleError"
 	FOR i=1:1:3 WRITE !
 	WRITE "════════════════════════",!
 	WRITE "      Student System    ",!
@@ -312,4 +313,14 @@ confirmDelete
 	IF confirm'="yes" DO
 	. WRITE "════════════════════════",!
 	. WRITE "Cancelled!",!
+	QUIT
+
+handleError
+	FOR i=1:1:3 WRITE !
+	WRITE "════════════════════════",!
+	WRITE "✗ Something went wrong! ",!
+	WRITE "  Returning to menu...  ",!
+	WRITE "════════════════════════",!
+	SET $ECODE=""
+	DO main
 	QUIT
